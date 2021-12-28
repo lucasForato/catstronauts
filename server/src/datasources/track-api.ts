@@ -9,7 +9,6 @@ class TrackAPI extends RESTDataSource {
     return this.get('tracks');
   }
   getAuthor(authorId: any) {
-    console.log(authorId)
     return this.get(`author/${authorId}`);
   }
 
@@ -18,7 +17,7 @@ class TrackAPI extends RESTDataSource {
   }
 
   getModules(trackId: any) {
-    return this.get(`track/${trackId}/modules`)
+    return this.get(`track/${trackId}/modules`);
   }
 }
 module.exports = TrackAPI;

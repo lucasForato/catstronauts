@@ -3,6 +3,7 @@ import { Router } from '@reach/router';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 /** importing our pages */
 import Tracks from './tracks';
+import Track from './track';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3333/graphql',
@@ -14,6 +15,7 @@ export default function Pages() {
     <ApolloProvider client={client}>
       <Router primary={false} component={Fragment}>
         <Tracks path="/" />
+        <Track path="/tracks/:trackId" />
       </Router>
     </ApolloProvider>
   );
