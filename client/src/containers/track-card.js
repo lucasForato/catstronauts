@@ -2,16 +2,18 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, mq } from '../styles';
 import { humanReadableTimeFromSeconds } from '../utils/helpers';
+import { navigate } from '@reach/router';
 
-/**
- * Track Card component renders basic info in a card format
- * for each track populating the tracks grid homepage.
- */
+
+
 const TrackCard = ({ track }) => {
-  const { title, thumbnail, author, length, modulesCount } = track;
+  const { id, title, thumbnail, author, length, modulesCount } = track;
+  const handleClick = () => {
+    navigate(`/tracks/${id}`)
+  };
 
   return (
-    <CardContainer>
+    <CardContainer onClick={handleClick}>
       <CardContent>
         <CardImageContainer>
           <CardImage src={thumbnail} alt={title} />
@@ -23,8 +25,7 @@ const TrackCard = ({ track }) => {
             <AuthorAndTrack>
               <AuthorName>{author.name}</AuthorName>
               <TrackLength>
-                {modulesCount} modules -{' '}
-                {humanReadableTimeFromSeconds(length)}
+                {modulesCount} modules - {humanReadableTimeFromSeconds(length)}
               </TrackLength>
             </AuthorAndTrack>
           </CardFooter>

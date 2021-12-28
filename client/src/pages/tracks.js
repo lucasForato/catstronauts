@@ -2,7 +2,6 @@ import React from 'react';
 import { Layout, QueryResult } from '../components';
 import { useQuery, gql } from '@apollo/client';
 import TrackCard from '../containers/track-card';
-import { navigate } from '@reach/router';
 
 export const TRACKS = gql`
   query getTracks {
@@ -20,6 +19,8 @@ export const TRACKS = gql`
   }
 `;
 
+
+
 const Tracks = () => {
   const { loading, error, data } = useQuery(TRACKS);
 
@@ -30,10 +31,6 @@ const Tracks = () => {
           <TrackCard
             key={track.id}
             track={track}
-            onClick={() => {
-              console.log('redirect')
-              navigate(`/tracks/${track.id}`);
-            }}
           />
         ))}
       </QueryResult>
