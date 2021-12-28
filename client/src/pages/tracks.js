@@ -4,19 +4,25 @@ import { useQuery, gql } from '@apollo/client';
 import TrackCard from '../containers/track-card';
 
 export const TRACKS = gql`
-  query getTracks {
-    getTracksForHome {
-      id
+  query Query {
+  getTracksForHome {
+    id
+    title
+    thumbnail
+    length
+    modulesCount
+    author {
+      name
+      photo
+    }
+    description
+    numberOfViews
+    modules {
       title
-      thumbnail
       length
-      modulesCount
-      author {
-        name
-        photo
-      }
     }
   }
+}
 `;
 
 

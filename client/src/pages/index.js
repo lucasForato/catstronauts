@@ -15,7 +15,7 @@ export default function Pages() {
     <ApolloProvider client={client}>
       <Router primary={false} component={Fragment}>
         <Tracks path="/" />
-        <Track path="/tracks/:trackId" />
+        <Track path="/track/:trackId" />
       </Router>
     </ApolloProvider>
   );

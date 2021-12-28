@@ -5,29 +5,31 @@ import TrackDetails from '../components/track-detail';
 
 const GET_TRACK = gql`
   query Query($trackId: ID!) {
-    track(id: $trackId) {
+  track(id: $trackId) {
+    id
+    title
+    description
+    thumbnail
+    author {
+      name
+      photo
+    }
+    length
+    modulesCount
+    numberOfViews
+    modules {
       title
-      author {
-        name
-        photo
-      }
-      thumbnail
       length
-      modulesCount
-      description
-      numberOfViews
-      modules {
-        title
-        length
-      }
     }
   }
+}
 `;
 
 const Track = ({ trackId }) => {
   const { loading, error, data } = useQuery(GET_TRACK, {
     variables: { trackId },
   });
+
   return (
     <Layout>
       <QueryResult error={error} loading={loading} data={data}>

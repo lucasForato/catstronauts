@@ -13,6 +13,17 @@ export default gql`
     modules: [Module!]!
   }
 
+  type Mutation {
+    incrementTrackViews(id: ID!): incrementTrackViewsReturn
+  }
+
+  type incrementTrackViewsReturn {
+    code: Int!
+    success: Boolean!
+    message: String!
+    track: Track
+  }
+
   extend type Query {
     getTracksForHome: [Track!]!
     track(id: ID!): Track
