@@ -1,18 +1,7 @@
 export default {
   Query: {
-    getAuthors() {
-      const author = {
-        id: 1,
-        name: 'lucas',
-      };
-      return [author];
+    getAuthor(_: unknown, { id }: { id: any }, { dataSources }: any) {
+      return dataSources.trackAPI.getAuthor(id);
     },
-    getAuthor() {
-      const author = {
-        id: 1,
-        name: 'lucas',
-      };
-      return author;
-    }
   },
 };
